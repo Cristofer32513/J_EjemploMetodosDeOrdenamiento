@@ -1,7 +1,12 @@
+import java.util.Arrays;
+
 class MetodosDeOrdenamiento{
 
+	public void mostrarVector(int[] datos){
+		System.out.println(Arrays.toString(datos));
+	}
 	
-	public void deBurbuja0(int[] datos){
+	public void ordenamientoBurbuja0(int[] datos){
 		int aux=0;
 		for(int i=0;i<datos.length;i++){
 			for(int j=(i+1);j<datos.length;j++){
