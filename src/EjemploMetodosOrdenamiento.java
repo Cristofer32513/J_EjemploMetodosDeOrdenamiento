@@ -128,12 +128,35 @@ class MetodosDeOrdenamiento{
 	}
 	
 	
-	
 }
 
 public class EjemploMetodosOrdenamiento {
 
 	public static void main(String[] args) {
-			
+		int[] edades;
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		
+		MetodosDeOrdenamiento metodos=new MetodosDeOrdenamiento();
+		
+		System.out.println("=================VECTOR ORIGINAL======================");
+		metodos.mostrarVector(edades);
+		System.out.println();
+		System.out.println();
+		System.out.println("===============ORDENAMIENTO BURBUJA===================");
+		metodos.ordenamientoBurbuja0(edades);
+		
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		metodos.ordenamientoBurbuja1(edades);
+		
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		metodos.ordenamientoBurbuja2(edades);
+		
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		metodos.ordenamientoBurbuja3(edades);
+		
+		
+		
+		
+		
 	}
 }
