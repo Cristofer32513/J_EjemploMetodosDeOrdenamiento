@@ -126,6 +126,30 @@ class MetodosDeOrdenamiento{
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
+	public void ordenmientoPorSeleccion(int[] datos){
+		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		tiempoInicial=System.nanoTime();
+		for(int i=0;i<datos.length;i++){
+			int menor=i;
+			for(int j=i+1;j<datos.length;j++){
+				contadorComparaciones++;
+				if(datos[j]<datos[menor])
+					menor=j;
+			}
+			int aux=datos[i];
+			datos[i]=datos[menor];
+			datos[menor]=aux;
+			contadorIntercambios++;
+			contadorRecorridos++;
+			contadorIntercambios++;
+		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+	}
 	
 }
 
