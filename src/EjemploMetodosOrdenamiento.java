@@ -16,8 +16,7 @@ class MetodosDeOrdenamiento{
 		System.out.println("    - Tiempo total de ejecucion: "+tiempoTotal);
 		System.out.println("    - Tiempo total de ejecucion: "+(double)tiempoTotal/1000000+" milisegundos");
 	}
-	
-	
+		
 	public void ordenamientoBurbuja0(int[] datos){
 		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
@@ -43,6 +42,30 @@ class MetodosDeOrdenamiento{
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
+	public void ordenamientoBurbuja1(int[] datos){
+		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		
+		int aux=0;
+		tiempoInicial=System.nanoTime();
+		for(int i=2;i<=datos.length;i++){
+			for(int j=0;j<=(datos.length-i);j++){
+				contadorComparaciones++;
+				if(datos[j]>datos[j+1]){
+					contadorIntercambios++;
+					aux=datos[j];
+					datos[j]=datos[j+1];
+					datos[j+1]=aux;
+				}
+			}
+			contadorRecorridos++;
+		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+	}
 	
 	
 	
