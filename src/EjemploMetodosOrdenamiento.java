@@ -176,6 +176,12 @@ public class EjemploMetodosOrdenamiento {
 		
 		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
 		metodos.ordenamientoBurbuja3(edades);
+		System.out.println();
+		System.out.println();
+		
+		System.out.println("===============ORDENAMIENTO SELECCION====================");
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		metodos.ordenmientoPorSeleccion(edades);
 		
 		
 		
