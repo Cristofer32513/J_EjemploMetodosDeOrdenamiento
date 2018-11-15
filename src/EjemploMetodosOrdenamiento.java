@@ -67,6 +67,34 @@ class MetodosDeOrdenamiento{
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
+	public void ordenamientoBurbuja2(int[] datos){
+		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		int i=1;
+		boolean ordenado=false;
+		int aux=0;
+		tiempoInicial=System.nanoTime();
+		while(i<datos.length && !ordenado){
+			i++;
+			ordenado=true;
+			for(int j=0;j<=(datos.length-i);j++){
+				contadorComparaciones++;
+				if(datos[j]>datos[j+1]){
+					contadorIntercambios++;
+					ordenado=false;
+					aux=datos[j];
+					datos[j]=datos[j+1];
+					datos[j+1]=aux;
+				}
+			}
+			contadorRecorridos++;
+		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+	}
 	
 	
 }
