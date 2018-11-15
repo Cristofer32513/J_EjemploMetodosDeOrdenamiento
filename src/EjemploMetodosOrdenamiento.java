@@ -10,10 +10,9 @@ class MetodosDeOrdenamiento{
 			int contadorIntercambios, int contadorRecorridos, long tiempoTotal){
 		System.out.println("       DATOS DE EFICIENCIA DEL ALGORITMO");
 		System.out.println();
-		System.out.println("    - Cantidad de recorridos realizados: "+contadorComparaciones);
+		System.out.println("    - Cantidad de recorridos realizados: "+contadorRecorridos);
 		System.out.println("    - Cantidad de comparaciones realizadas: "+contadorComparaciones);
 		System.out.println("    - Cantidad de intercambios realizados: "+contadorIntercambios);
-		System.out.println("    - Tiempo total de ejecucion: "+tiempoTotal);
 		System.out.println("    - Tiempo total de ejecucion: "+(double)tiempoTotal/1000000+" milisegundos");
 	}
 		
