@@ -118,6 +118,8 @@ public class EjemploMetodosOrdenamiento {
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
+					System.out.println();
+					System.out.println();
 					break;
 				case 2:
 					if(datos.length>0){
