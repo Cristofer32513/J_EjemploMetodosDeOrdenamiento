@@ -15,7 +15,9 @@ class MetodosDeOrdenamiento {
 		System.out.println("    - Cantidad de intercambios realizados: "+contadorIntercambios);
 		System.out.println("    - Tiempo total de ejecucion: "+(double)tiempoTotal/1000000+" milisegundos");
 	}
-		
+	
+	
+	//=======METODO DE ORDENAMIENTO BURBUJA=======
 	public void ordenamientoBurbuja0(int[] datos){
 		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
@@ -126,6 +128,8 @@ class MetodosDeOrdenamiento {
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
+	
+	//======METODO DE ORDENAMIENTO POR SELECCION======
 	public void ordenamientoPorSeleccion(int[] datos){
 		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
@@ -151,6 +155,8 @@ class MetodosDeOrdenamiento {
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
+	
+	//======METODO DE ORDENAMIENTO POR INSERCION======
 	public void ordenamientoPorInsercion(int[] datos){
 		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
