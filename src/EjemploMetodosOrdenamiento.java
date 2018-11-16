@@ -1,186 +1,5 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-
-class MetodosDeOrdenamiento{
-
-	public void mostrarVector(int[] datos){
-		System.out.println(Arrays.toString(datos));
-	}
-	
-	public void mostrarDatosDeEficiencia(int contadorComparaciones,
-			int contadorIntercambios, int contadorRecorridos, long tiempoTotal){
-		System.out.println("       DATOS DE EFICIENCIA DEL ALGORITMO");
-		System.out.println();
-		System.out.println("    - Cantidad de recorridos realizados: "+contadorRecorridos);
-		System.out.println("    - Cantidad de comparaciones realizadas: "+contadorComparaciones);
-		System.out.println("    - Cantidad de intercambios realizados: "+contadorIntercambios);
-		System.out.println("    - Tiempo total de ejecucion: "+(double)tiempoTotal/1000000+" milisegundos");
-	}
-		
-	public void ordenamientoBurbuja0(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		
-		int aux=0;
-		tiempoInicial=System.nanoTime();
-		for(int i=0;i<datos.length;i++){
-			for(int j=(i+1);j<datos.length;j++){
-				contadorComparaciones++;
-				if(datos[i]>datos[(j)]){
-					contadorIntercambios++;
-					aux=datos[i];
-					datos[i]=datos[j];
-					datos[j]=aux;
-				}
-			}
-			contadorRecorridos++;
-		}
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-	
-	public void ordenamientoBurbuja1(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		
-		int aux=0;
-		tiempoInicial=System.nanoTime();
-		for(int i=2;i<=datos.length;i++){
-			for(int j=0;j<=(datos.length-i);j++){
-				contadorComparaciones++;
-				if(datos[j]>datos[j+1]){
-					contadorIntercambios++;
-					aux=datos[j];
-					datos[j]=datos[j+1];
-					datos[j+1]=aux;
-				}
-			}
-			contadorRecorridos++;
-		}
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-	
-	public void ordenamientoBurbuja2(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		int i=1;
-		boolean ordenado=false;
-		int aux=0;
-		tiempoInicial=System.nanoTime();
-		while(i<datos.length && !ordenado){
-			i++;
-			ordenado=true;
-			for(int j=0;j<=(datos.length-i);j++){
-				contadorComparaciones++;
-				if(datos[j]>datos[j+1]){
-					contadorIntercambios++;
-					ordenado=false;
-					aux=datos[j];
-					datos[j]=datos[j+1];
-					datos[j+1]=aux;
-				}
-			}
-			contadorRecorridos++;
-		}
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-	
-	public void ordenamientoBurbuja3(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		int i=1;
-		boolean ordenado;
-		int aux=0;
-		
-		tiempoInicial=System.nanoTime();
-		do{
-			i++;
-			ordenado=true;
-			for(int j=0;j<=(datos.length-i);j++){
-				contadorComparaciones++;
-				if(datos[j]>datos[j+1]){
-					contadorIntercambios++;
-					ordenado=false;
-					aux=datos[j];
-					datos[j]=datos[j+1];
-					datos[j+1]=aux;
-				}
-			}
-			contadorRecorridos++;
-		}
-		while(i<datos.length || !ordenado);
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-	
-	public void ordenamientoPorSeleccion(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		tiempoInicial=System.nanoTime();
-		for(int i=0;i<datos.length;i++){
-			int menor=i;
-			for(int j=i+1;j<datos.length;j++){
-				contadorComparaciones++;
-				if(datos[j]<datos[menor])
-					menor=j;
-			}
-			int aux=datos[i];
-			datos[i]=datos[menor];
-			datos[menor]=aux;
-			contadorIntercambios++;
-			contadorRecorridos++;
-			contadorIntercambios++;
-		}
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-	
-	public void ordenamientoPorInsercion(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		int i=0, j=0;
-		int aux=0;
-		
-		tiempoInicial=System.nanoTime();
-		for(i=1;i<datos.length;i++){
-			aux=datos[i];
-			j=i-1;
-			contadorComparaciones++;
-			while(j>=0 && aux<datos[j]){
-				contadorIntercambios++;
-				datos[j+1]=datos[j];
-				j--;
-			}
-			datos[j+1]=aux;
-			contadorRecorridos++;
-		}
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
-
-
-}
 
 public class EjemploMetodosOrdenamiento {
 
@@ -188,9 +7,9 @@ public class EjemploMetodosOrdenamiento {
 		int[] edades;
 		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
 		
-		/*MetodosDeOrdenamiento metodos=new MetodosDeOrdenamiento();
+		MetodosDeOrdenamiento metodos=new MetodosDeOrdenamiento();
 		
-		System.out.println("=================VECTOR ORIGINAL======================");
+		/*System.out.println("=================VECTOR ORIGINAL======================");
 		metodos.mostrarVector(edades);
 		System.out.println();
 		System.out.println();
@@ -225,7 +44,7 @@ public class EjemploMetodosOrdenamiento {
 		boolean repetirMenuPrincipal=true;
 		int opcion=0;
 		int[] datos=new int[0];
-		int[] copiaDatos=datos;
+		int[] copiaDatos=new int[0];
 		
 		do{
 			System.out.println("1 = Metodo de ordenamiento burbuja.");
@@ -244,7 +63,7 @@ public class EjemploMetodosOrdenamiento {
 				case 1:
 					if(datos.length>0){
 						boolean repetirMenuMetodoburbuja=true;
-						int opcion3=0;		
+						int opcionBurbuja=0;		
 						
 						do{
 							System.out.println("  Utilizar metodo...");
@@ -255,36 +74,60 @@ public class EjemploMetodosOrdenamiento {
 							System.out.println("    4 = Burbuja 3.");
 							System.out.println("    -----------------------------------------");
 							System.out.print("    Elija una opcion...\n    ");
-							opcion3=entrada.nextInt();
-							System.out.println();
+							opcionBurbuja=entrada.nextInt();
 							System.out.println();
 						
-							if(opcion3>=1 && opcion3 <=4){				
-								switch(opcion3){
+							if(opcionBurbuja>=1 && opcionBurbuja <=4){				
+								switch(opcionBurbuja){
 								case 1:
-									
+									System.out.println("    =================VECTOR ORIGINAL======================");
+									System.out.print("\n    ");
+									metodos.mostrarVector(datos);
+									System.out.println();
+									System.out.println();
+									System.out.println("    ===============ORDENAMIENTO BURBUJA 0===================");
+									System.out.print("\n    ");
+									metodos.ordenamientoBurbuja0(datos);
 									break;
 								case 2:
-									
+									System.out.println("    =================VECTOR ORIGINAL======================");
+									System.out.print("\n    ");
+									metodos.mostrarVector(datos);
+									System.out.println();
+									System.out.println();
+									System.out.println("    ===============ORDENAMIENTO BURBUJA 1===================");
+									System.out.print("\n    ");
+									metodos.ordenamientoBurbuja1(datos);
 									break;
 								case 3:
-									
+									System.out.println("    =================VECTOR ORIGINAL======================");
+									System.out.print("\n    ");
+									metodos.mostrarVector(datos);
+									System.out.println();
+									System.out.println();
+									System.out.println("    ===============ORDENAMIENTO BURBUJA 2===================");
+									System.out.print("\n    ");
+									metodos.ordenamientoBurbuja2(datos);
 									break;
 								case 4:
-									
+									System.out.println("    =================VECTOR ORIGINAL======================");
+									System.out.print("\n    ");
+									metodos.mostrarVector(datos);
+									System.out.println();
+									System.out.println();
+									System.out.println("    ===============ORDENAMIENTO BURBUJA 3===================");
+									System.out.print("\n    ");
+									metodos.ordenamientoBurbuja3(datos);
 									break;
 								}
+								datos=copiaDatos;
+								copiaDatos=datos;
 								repetirMenuMetodoburbuja=false;
-								System.out.println();
-								System.out.println("  El vector a sido creado y llenado.");
-								System.out.println();
-								System.out.println();
 							}
-							else{
-								System.out.println("    *"+opcion+" no es una opcion valida, intenta otra vez.");
-								System.out.println();
-								System.out.println();
-							}
+							else
+								System.out.println("    *"+opcionBurbuja+" no es una opcion valida, intenta otra vez.");
+							System.out.println();
+							System.out.println();
 						}
 						while(repetirMenuMetodoburbuja);
 					}
@@ -331,31 +174,39 @@ public class EjemploMetodosOrdenamiento {
 							switch(opcionVector){
 							case 1:
 								datos=new int[1000];
+								copiaDatos=new int[1000];
 								System.out.println("  Creando vector...");
-								for(int i=0;i<datos.length;i++)
+								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-								copiaDatos=datos;
+									copiaDatos[i]=datos[i];
+								}
 								break;
 							case 2:
 								datos=new int[10000];
+								copiaDatos=new int[10000];
 								System.out.println("  Creando vector...");
-								for(int i=0;i<datos.length;i++)
+								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-								copiaDatos=datos;
+									copiaDatos[i]=datos[i];
+								}
 								break;
 							case 3:
 								datos=new int[100000];
+								copiaDatos=new int[100000];
 								System.out.println("  Creando vector...");
-								for(int i=0;i<datos.length;i++)
+								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-								copiaDatos=datos;
+									copiaDatos[i]=datos[i];
+								}
 								break;
 							case 4:
-								datos=new int[100000];
+								datos=new int[1000000];
+								copiaDatos=new int[1000000];
 								System.out.println("  Creando vector...");
-								for(int i=0;i<datos.length;i++)
+								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-								copiaDatos=datos;
+									copiaDatos[i]=datos[i];
+								}
 								break;
 							}
 							repetirMenuTamañoVector=false;
