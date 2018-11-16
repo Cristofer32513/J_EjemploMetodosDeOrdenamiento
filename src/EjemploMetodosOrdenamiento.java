@@ -118,12 +118,14 @@ public class EjemploMetodosOrdenamiento {
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
-					System.out.println();
-					System.out.println();
 					break;
 				case 2:
 					if(datos.length>0){
-						
+						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						metodos.mostrarVector(datos);
+						System.out.println("\n\n");
+						System.out.println("  ===================================================ORDENAMIENTO POR SELECCION==================================================\n");
+						metodos.ordenamientoPorSeleccion(datos.clone());
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
