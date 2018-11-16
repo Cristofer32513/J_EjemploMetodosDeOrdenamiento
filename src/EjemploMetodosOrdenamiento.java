@@ -44,7 +44,6 @@ public class EjemploMetodosOrdenamiento {
 		boolean repetirMenuPrincipal=true;
 		int opcion=0;
 		int[] datos=new int[0];
-		int[] copiaDatos=new int[0];
 		
 		do{
 			System.out.println("1 = Metodo de ordenamiento burbuja.");
@@ -87,7 +86,7 @@ public class EjemploMetodosOrdenamiento {
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 0===================");
 									System.out.print("\n    ");
-									metodos.ordenamientoBurbuja0(datos);
+									metodos.ordenamientoBurbuja0(datos.clone());
 									break;
 								case 2:
 									System.out.println("    =================VECTOR ORIGINAL======================");
@@ -97,7 +96,7 @@ public class EjemploMetodosOrdenamiento {
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 1===================");
 									System.out.print("\n    ");
-									metodos.ordenamientoBurbuja1(datos);
+									metodos.ordenamientoBurbuja1(datos.clone());
 									break;
 								case 3:
 									System.out.println("    =================VECTOR ORIGINAL======================");
@@ -107,7 +106,7 @@ public class EjemploMetodosOrdenamiento {
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 2===================");
 									System.out.print("\n    ");
-									metodos.ordenamientoBurbuja2(datos);
+									metodos.ordenamientoBurbuja2(datos.clone());
 									break;
 								case 4:
 									System.out.println("    =================VECTOR ORIGINAL======================");
@@ -117,11 +116,9 @@ public class EjemploMetodosOrdenamiento {
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 3===================");
 									System.out.print("\n    ");
-									metodos.ordenamientoBurbuja3(datos);
+									metodos.ordenamientoBurbuja3(datos.clone());
 									break;
 								}
-								datos=copiaDatos;
-								copiaDatos=datos;
 								repetirMenuMetodoburbuja=false;
 							}
 							else
@@ -174,38 +171,30 @@ public class EjemploMetodosOrdenamiento {
 							switch(opcionVector){
 							case 1:
 								datos=new int[1000];
-								copiaDatos=new int[1000];
 								System.out.println("  Creando vector...");
 								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-									copiaDatos[i]=datos[i];
 								}
 								break;
 							case 2:
 								datos=new int[10000];
-								copiaDatos=new int[10000];
 								System.out.println("  Creando vector...");
 								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-									copiaDatos[i]=datos[i];
 								}
 								break;
 							case 3:
 								datos=new int[100000];
-								copiaDatos=new int[100000];
 								System.out.println("  Creando vector...");
 								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-									copiaDatos[i]=datos[i];
 								}
 								break;
 							case 4:
 								datos=new int[1000000];
-								copiaDatos=new int[1000000];
 								System.out.println("  Creando vector...");
 								for(int i=0;i<datos.length;i++){
 									datos[i]=new Random().nextInt(100);
-									copiaDatos[i]=datos[i];
 								}
 								break;
 							}
