@@ -13,8 +13,8 @@ class MetodosDeOrdenamiento {
 		}
 	}
 	
-	public void mostrarDatosDeEficiencia(int contadorComparaciones,
-			int contadorIntercambios, int contadorRecorridos, long tiempoTotal){
+	public void mostrarDatosDeEficiencia(long contadorComparaciones,
+			long contadorIntercambios, long contadorRecorridos, long tiempoTotal){
 		System.out.println("       DATOS DE EFICIENCIA DEL ALGORITMO");
 		System.out.println();
 		System.out.println("    - Cantidad  de  recorridos  realizados:	"+contadorRecorridos);
@@ -26,7 +26,7 @@ class MetodosDeOrdenamiento {
 	
 	//=======METODO DE ORDENAMIENTO BURBUJA=======
 	public void ordenamientoBurbuja0(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		
 		int aux=0;
@@ -51,7 +51,7 @@ class MetodosDeOrdenamiento {
 	}
 	
 	public void ordenamientoBurbuja1(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		
 		int aux=0;
@@ -76,7 +76,7 @@ class MetodosDeOrdenamiento {
 	}
 	
 	public void ordenamientoBurbuja2(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		int i=1;
 		boolean ordenado=false;
@@ -105,7 +105,7 @@ class MetodosDeOrdenamiento {
 	}
 	
 	public void ordenamientoBurbuja3(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		int i=1;
 		boolean ordenado;
@@ -138,7 +138,7 @@ class MetodosDeOrdenamiento {
 	
 	//======METODO DE ORDENAMIENTO POR SELECCION======
 	public void ordenamientoPorSeleccion(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		tiempoInicial=System.nanoTime();
 		for(int i=0;i<datos.length;i++){
@@ -165,7 +165,7 @@ class MetodosDeOrdenamiento {
 	
 	//======METODO DE ORDENAMIENTO POR INSERCION======
 	public void ordenamientoPorInsercion(int[] datos){
-		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		int i=0, j=0;
 		int aux=0;

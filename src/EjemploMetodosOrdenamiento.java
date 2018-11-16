@@ -124,7 +124,7 @@ public class EjemploMetodosOrdenamiento {
 						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
 						metodos.mostrarVector(datos);
 						System.out.println("\n\n");
-						System.out.println("  ===================================================ORDENAMIENTO POR SELECCION==================================================\n");
+						System.out.println("  =================================================ORDENAMIENTO POR SELECCION================================================\n");
 						metodos.ordenamientoPorSeleccion(datos.clone());
 					}
 					else
@@ -134,7 +134,11 @@ public class EjemploMetodosOrdenamiento {
 					break;
 				case 3:
 					if(datos.length>0){
-						
+						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						metodos.mostrarVector(datos);
+						System.out.println("\n\n");
+						System.out.println("  =================================================ORDENAMIENTO POR INSERCION================================================\n");
+						metodos.ordenamientoPorInsercion(datos.clone());
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
