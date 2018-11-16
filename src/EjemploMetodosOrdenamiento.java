@@ -151,7 +151,31 @@ class MetodosDeOrdenamiento{
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
-	
+	public void ordenamientoPorInsercion(int[] datos){
+		int contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		int i=0, j=0;
+		int aux=0;
+		
+		tiempoInicial=System.nanoTime();
+		for(i=1;i<datos.length;i++){
+			aux=datos[i];
+			j=i-1;
+			contadorComparaciones++;
+			while(j>=0 && aux<datos[j]){
+				contadorIntercambios++;
+				datos[j+1]=datos[j];
+				j--;
+			}
+			datos[j+1]=aux;
+			contadorRecorridos++;
+		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+	}
 
 
 }
@@ -188,6 +212,9 @@ public class EjemploMetodosOrdenamiento {
 		System.out.println();
 		System.out.println();
 		
+		System.out.println("===============ORDENAMIENTO POR INSERCION====================");
+		edades=new int[]{34, 25, 12, 87, 9, 10, 34, 37, 24, 2};
+		metodos.ordenamientoPorInsercion(edades);
 		
 		
 		
