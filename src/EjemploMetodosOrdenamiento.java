@@ -80,42 +80,34 @@ public class EjemploMetodosOrdenamiento {
 								switch(opcionBurbuja){
 								case 1:
 									System.out.println("    =================VECTOR ORIGINAL======================");
-									System.out.print("\n    ");
 									metodos.mostrarVector(datos);
 									System.out.println();
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 0===================");
-									System.out.print("\n    ");
 									metodos.ordenamientoBurbuja0(datos.clone());
 									break;
 								case 2:
 									System.out.println("    =================VECTOR ORIGINAL======================");
-									System.out.print("\n    ");
 									metodos.mostrarVector(datos);
 									System.out.println();
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 1===================");
-									System.out.print("\n    ");
 									metodos.ordenamientoBurbuja1(datos.clone());
 									break;
 								case 3:
 									System.out.println("    =================VECTOR ORIGINAL======================");
-									System.out.print("\n    ");
 									metodos.mostrarVector(datos);
 									System.out.println();
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 2===================");
-									System.out.print("\n    ");
 									metodos.ordenamientoBurbuja2(datos.clone());
 									break;
 								case 4:
 									System.out.println("    =================VECTOR ORIGINAL======================");
-									System.out.print("\n    ");
 									metodos.mostrarVector(datos);
 									System.out.println();
 									System.out.println();
 									System.out.println("    ===============ORDENAMIENTO BURBUJA 3===================");
-									System.out.print("\n    ");
 									metodos.ordenamientoBurbuja3(datos.clone());
 									break;
 								}

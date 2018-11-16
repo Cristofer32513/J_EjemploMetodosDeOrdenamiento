@@ -1,9 +1,16 @@
-import java.util.Arrays;
-
 class MetodosDeOrdenamiento {
-
 	public void mostrarVector(int[] datos){
-		System.out.println(Arrays.toString(datos));
+		long cont=1;
+		for(int i=0;i<datos.length;i++){
+			if(cont==15){
+				System.out.println("  "+datos[i]+",	");
+				cont=0;
+			}
+			else{
+				System.out.print("  "+datos[i]+",	");
+				cont++;
+			}
+		}
 	}
 	
 	public void mostrarDatosDeEficiencia(int contadorComparaciones,
@@ -182,6 +189,4 @@ class MetodosDeOrdenamiento {
 		System.out.println();
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
-
-
 }
