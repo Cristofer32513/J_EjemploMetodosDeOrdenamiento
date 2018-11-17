@@ -4,7 +4,7 @@ class MetodosDeOrdenamiento {
 		for(int i=0;i<datos.length;i++){
 			if(cont==15){
 				System.out.println("  "+datos[i]+",	");
-				cont=0;
+				cont=1;
 			}
 			else{
 				System.out.print("  "+datos[i]+",	");
