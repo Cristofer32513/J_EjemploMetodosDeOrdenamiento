@@ -20,6 +20,7 @@ class MetodosDeOrdenamiento {
 		System.out.println("    - Cantidad  de  recorridos  realizados:	"+contadorRecorridos);
 		System.out.println("    - Cantidad de comparaciones realizadas:	"+contadorComparaciones);
 		System.out.println("    - Cantidad  de intercambios realizados:	"+contadorIntercambios);
+		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000000+" segundos");
 		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000+" milisegundos");
 	}
 	
