@@ -179,15 +179,15 @@ public class EjemploMetodosOrdenamiento {
 					repetirMenuPrincipal=false;
 					break;
 				}
-				System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-				System.out.println();
-				System.out.println();
 			}
 			else{
 				System.out.println("  *"+opcion+" no es una opcion valida, intenta otra vez.");
 				System.out.println();
 				System.out.println();
 			}
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println();
 		}
 		while(repetirMenuPrincipal);
 		System.out.println("Usted ha salido.");
