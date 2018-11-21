@@ -194,17 +194,21 @@ class MetodosDeOrdenamiento {
 	
 	//========METODO DE ORDENAMIENTO SELLSORT=========
 	public void ordenamientoSellSort(int[] datos){
-		int salto;
-		int aux;
-		int i;
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		int salto, aux, i;
 		boolean cambios;
-	
+		
+		tiempoInicial=System.nanoTime();
 		for(salto=datos.length/2;salto!=0;salto/=2){
 			cambios=true;
 			while(cambios){
 				cambios=false;
+				contadorRecorridos++;
 				for (i=salto;i<datos.length;i++){
+					contadorComparaciones++;
 					if(datos[i-salto]>datos[i]){
+						contadorIntercambios++;
 						aux=datos[i];
 						datos[i]=datos[i-salto];
 						datos[i-salto]=aux;
@@ -213,6 +217,11 @@ class MetodosDeOrdenamiento {
 				}
 			}
 		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
 	
 	
