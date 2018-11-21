@@ -190,4 +190,32 @@ class MetodosDeOrdenamiento {
 		System.out.println();
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	}
+	
+	
+	//========METODO DE ORDENAMIENTO SELLSORT=========
+	public void ordenamientoSellSort(int[] datos){
+		int salto;
+		int aux;
+		int i;
+		boolean cambios;
+	
+		for(salto=datos.length/2;salto!=0;salto/=2){
+			cambios=true;
+			while(cambios){
+				cambios=false;
+				for (i=salto;i<datos.length;i++){
+					if(datos[i-salto]>datos[i]){
+						aux=datos[i];
+						datos[i]=datos[i-salto];
+						datos[i-salto]=aux;
+						cambios=true;
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+	
 }
