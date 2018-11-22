@@ -1,6 +1,6 @@
 class MetodosDeOrdenamiento {
 	public void mostrarVector(int[] datos){
-		long cont=1;
+		byte cont=1;
 		for(int i=0;i<datos.length;i++){
 			if(cont==15){
 				System.out.println("  "+datos[i]+",	");
@@ -225,6 +225,49 @@ class MetodosDeOrdenamiento {
 	}
 	
 	
+	//========METODO DE ORDENAMIENTO QUICKSORT=========
+	public void ordenamientoQuickSort(int[] datos, int primero, int ultimo){
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		
+		int i, j, pivote, aux;
+		i=primero;
+		j=ultimo;
+		pivote=datos[primero];
+		tiempoInicial=System.nanoTime();
+		while(i<j){
+			while(datos[i]<=pivote && i<j)
+				i++;
+			while(datos[j]>pivote)
+				j--;
+			contadorComparaciones++;
+			if(i<j){
+				contadorIntercambios++;
+				aux=datos[i];
+				datos[i]=datos[j];
+				datos[j]=aux;
+			}
+		}
+		contadorRecorridos++;
+		datos[primero]=datos[j];
+		datos[j]=pivote;
+		contadorIntercambios++;
+		if(primero<j-1)
+			ordenamientoQuickSort(datos, primero, j-1);
+		if(j+1<ultimo)
+			ordenamientoQuickSort(datos, j+1, ultimo);
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
 	
+		
+		
+	
+		
+		
+		
+	}
 	
 }
