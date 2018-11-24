@@ -18,15 +18,16 @@ public class EjemploMetodosOrdenamiento {
 			System.out.println("3 = Metodo de ordenamiento por Insercion.");
 			System.out.println("4 = Metodo de ordenamiento Sellsort.");
 			System.out.println("5 = Metodo de ordenamiento QuickSort.");
-			System.out.println("6 = Elegir tamaño del vector a utilizar.");
-			System.out.println("7 = Salir");
+			System.out.println("6 = Metodo de ordenamiento RadixSort.");
+			System.out.println("7 = Elegir tamaño del vector a utilizar.");
+			System.out.println("8 = Salir");
 			System.out.println("-----------------------------------------");
 			System.out.println("Elija una opcion...");
 			opcion=entrada.nextInt();
 			System.out.println();
 			System.out.println();
 			
-			if(opcion>=1 && opcion <=7){
+			if(opcion>=1 && opcion <=8){
 				switch(opcion){
 				case 1:
 					if(datos.length>0){
@@ -135,7 +136,15 @@ public class EjemploMetodosOrdenamiento {
 						metodos.mostrarVector(datos);
 						System.out.println("\n\n");
 						System.out.println("  ===================================================ORDENAMIENTO QUICKSORT==================================================\n");
-						metodos.ordenamientoQuickSort(datos.clone(), datos[0], datos[datos.length-1]);
+						int[]copiaDatos=datos.clone();
+						long tiempoTotal=0, tiempoInicial=0;
+						tiempoInicial=System.nanoTime();
+						metodos.ordenamientoQuickSort(copiaDatos, 0, datos.length-1);
+						tiempoTotal=System.nanoTime()-tiempoInicial;
+						metodos.mostrarVector(copiaDatos);
+						System.out.println();
+						System.out.println();
+						metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal);
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
@@ -143,6 +152,19 @@ public class EjemploMetodosOrdenamiento {
 					System.out.println();
 					break;
 				case 6:
+					if(datos.length>0){
+						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						metodos.mostrarVector(datos);
+						System.out.println("\n\n");
+						System.out.println("  ===================================================ORDENAMIENTO RADIXSORT==================================================\n");
+						metodos.ordenamientoRadixSort(datos.clone());
+					}
+					else
+						System.out.println("  *No se ha elegido un tamaño para el vector.");
+					System.out.println();
+					System.out.println();
+					break;
+				case 7:
 					boolean repetirMenuTamañoVector=true;
 					int opcionVector=0;		
 					
@@ -203,7 +225,7 @@ public class EjemploMetodosOrdenamiento {
 					}
 					while(repetirMenuTamañoVector);
 					break;
-				case 7:
+				case 8:
 					repetirMenuPrincipal=false;
 					break;
 				}
