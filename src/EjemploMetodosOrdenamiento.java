@@ -139,7 +139,7 @@ public class EjemploMetodosOrdenamiento {
 						int[]copiaDatos=datos.clone();
 						long tiempoTotal=0, tiempoInicial=0;
 						tiempoInicial=System.nanoTime();
-						metodos.ordenamientoQuickSort(copiaDatos, 0, datos.length-1);
+						metodos.ordenamientoQuickSort(copiaDatos, 0, copiaDatos.length-1);
 						tiempoTotal=System.nanoTime()-tiempoInicial;
 						metodos.mostrarVector(copiaDatos);
 						System.out.println();

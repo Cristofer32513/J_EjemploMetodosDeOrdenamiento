@@ -298,16 +298,5 @@ class MetodosDeOrdenamiento {
 		System.out.println();
 		System.out.println();
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-    }
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    }	
 }
