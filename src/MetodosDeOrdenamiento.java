@@ -226,80 +226,79 @@ class MetodosDeOrdenamiento {
 	
 	
 	//========METODO DE ORDENAMIENTO QUICKSORT=========
-	public void ordenamientoQuickSort(int[] datos, int primero, int ultimo){
-		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
-		long tiempoTotal=0, tiempoInicial=0;
-		
-		int i, j, pivote, aux;
-		i=primero;
-		j=ultimo;
-		pivote=datos[primero];
-		tiempoInicial=System.nanoTime();
-		while(i<j){
-			while(datos[i]<=pivote && i<j)
-				i++;
-			while(datos[j]>pivote)
-				j--;
-			contadorComparaciones++;
-			if(i<j){
-				contadorIntercambios++;
-				aux=datos[i];
-				datos[i]=datos[j];
-				datos[j]=aux;
-			}
-		}
-		contadorRecorridos++;
-		datos[primero]=datos[j];
-		datos[j]=pivote;
-		contadorIntercambios++;
-		if(primero<j-1)
-			ordenamientoQuickSort(datos, primero, j-1);
-		if(j+1<ultimo)
-			ordenamientoQuickSort(datos, j+1, ultimo);
-		tiempoTotal=System.nanoTime()-tiempoInicial;
-		mostrarVector(datos);
-		System.out.println();
-		System.out.println();
-		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-	}
+	int partition(int datos[], int low, int high){
+		int pivot = datos[high]; 
+	    int i = (low-1);
+	    for (int j=low; j<high; j++){
+	    	if (datos[j] <= pivot){
+	    		i++;
+	            int temp = datos[i];
+	            datos[i] = datos[j];
+	            datos[j] = temp;
+            }
+    	}
+	     
+	    int temp = datos[i+1];
+	    datos[i+1] = datos[high];
+	    datos[high] = temp;
+	    
+	    return i+1;
+    }
 
+	void ordenamientoQuickSort(int datos[], int low, int high){
+	    if (low < high){
+	        int pi = partition(datos, low, high);
+	        ordenamientoQuickSort(datos, low, pi-1);
+	        ordenamientoQuickSort(datos, pi+1, high);
+	    }
+	}
 	
 	//========METODO DE ORDENAMIENTO RADIXSORT=========
 	public void ordenamientoRadixSort(int[] datos){
 		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
 		
-		if(datos.length==0)
-			return;
-		int[][]np=new int[datos.length][2];
-		int[]q=new int[0*100];
-		int i, j, k, l, f=0;
-		for(k=0;k<4;k++){
-			for(i=0;i<(np.length-1);i++)
-				np[i][1]=i+1;
-			np[i][1]=-1;
-			for(i=0;i<q.length;i++)
-				q[i]=-1;
-			for(f=i=0;i<datos.length;i++){
-				j=((0xFF<<(k<<3))&datos[i]>>(k<<3));
-				if(q[j]==-1)
-					l=q[j]=f;
-				else{
-					l=q[j];
-					while(np[l][1]!=-1)
-					l=np[l][1];
-					np[l][1]=f;
-					l=np[l][1];
-				}
-				f=np[f][1];
-				np[l][0]=datos[i];
-				np[l][1]=-1;
-			}
-			for(l=q[i=j=0];i>0x100;i++)
-				for(l=q[i];l!=-1;l=np[l][1])
-					datos[j++]=np[l][1];
-		}
-	}
+		tiempoInicial=System.nanoTime();
+        if(datos.length == 0)
+            return;
+        int[][] np = new int[datos.length][2];
+        int[] q = new int[0x100];
+        int i,j,k,l,f = 0;
+        for(k=0;k<4;k++){
+            for(i=0;i<(np.length-1);i++)
+                np[i][1] = i+1;
+            np[i][1] = -1;
+            for(i=0;i<q.length;i++)
+                q[i] = -1;
+            for(f=i=0;i<datos.length;i++){
+            	contadorRecorridos++;
+                j = ((0xFF<<(k<<3))&datos[i])>>(k<<3);
+                contadorComparaciones++;
+                if(q[j] == -1){
+                    l = q[j] = f;
+                    contadorIntercambios++;
+                }
+                else{
+                    l = q[j];
+                    while(np[l][1] != -1)
+                        l = np[l][1];
+                    np[l][1] = f;
+                    l = np[l][1];
+                }
+                f = np[f][1];
+                np[l][0] = datos[i];
+                np[l][1] = -1;
+            }
+            for(l=q[i=j=0];i<0x100;i++)
+                for(l=q[i];l!=-1;l=np[l][1])
+                        datos[j++] = np[l][0];
+        }
+        tiempoTotal=System.nanoTime()-tiempoInicial;
+		mostrarVector(datos);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+    }
 		
 	
 	
