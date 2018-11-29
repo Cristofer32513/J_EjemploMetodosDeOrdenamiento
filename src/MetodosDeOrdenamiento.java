@@ -312,8 +312,17 @@ class MetodosDeOrdenamiento {
 	
 	//========METODO DE ORDENAMIENTO POR INTERCALACION DE ARCHIVOS=========
 	public void ordenamientoPorIntercalacion(){
+		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		
 		File archivo1=new File("./src/ArchivoI1.txt");//Archivos a leer
 		File archivo2=new File("./src/ArchivoI2.txt");//Archivos a leer
+		File archivoSalida=new File("./src/ArchivoSalidaI.txt");
+				
+		System.out.println("  ======================================================DATOS DEL ARCHIVO 1======================================================\n");
+		mostrarArchivo(archivo1);
+		System.out.println("  ======================================================DATOS DEL ARCHIVO 2======================================================\n");
+		mostrarArchivo(archivo2);
 				
 		FileReader frA1 = null;
 		BufferedReader brA1;
@@ -323,6 +332,7 @@ class MetodosDeOrdenamiento {
 		FileWriter archivo3=null;
 		PrintWriter pr=null;
 		
+		tiempoInicial=System.nanoTime();
 		try{//Apertura del archivo de salida para escritura
 			archivo3=new FileWriter("./src/ArchivoSalidaI.txt", false);
 			pr=new PrintWriter(archivo3);
@@ -340,9 +350,12 @@ class MetodosDeOrdenamiento {
 					
 					lineaArchivo1=brA1.readLine();
 					lineaArchivo2=brA2.readLine();
-										
+					
+					contadorRecorridos++;	
 					do{//Se realizan comparaciones mientras la bandera no cambie
+						contadorComparaciones++;
 						if(Integer.parseInt(lineaArchivo1)<Integer.parseInt(lineaArchivo2)){
+							contadorIntercambios++;
 							pr.println(lineaArchivo1);
 							if((lineaArchivo1=brA1.readLine())==null){
 								pr.println(lineaArchivo2);
@@ -353,6 +366,7 @@ class MetodosDeOrdenamiento {
 							}
 						}
 						else if(Integer.parseInt(lineaArchivo1)>Integer.parseInt(lineaArchivo2)){
+							contadorIntercambios++;
 							pr.println(lineaArchivo2);
 							if((lineaArchivo2=brA2.readLine())==null){
 								pr.println(lineaArchivo1);
@@ -396,7 +410,7 @@ class MetodosDeOrdenamiento {
 			} catch (FileNotFoundException e) {
 				System.out.println("Error al abrir el archivo");
 				//e.printStackTrace();
-			} catch (IOException e) {
+			} catch (@SuppressWarnings("hiding") IOException e) {
 				e.printStackTrace();
 			}finally{
 				try {
@@ -405,7 +419,7 @@ class MetodosDeOrdenamiento {
 					System.out.println("Error al cerrar el archivo");
 				}
 			}//Final del archivo1
-			System.out.println("Archivos combinados y ordenados correctamente");
+			//System.out.println("Archivos combinados y ordenados correctamente");
 		}catch (IOException e){
 			System.out.println("Error al abrir o crear el archivo");
 		}finally{
@@ -414,6 +428,49 @@ class MetodosDeOrdenamiento {
 			}catch(IOException e){
 				System.out.println("Error al cerrar el archivo");
 			}
-		}//Final del archivo3	
+		}//Final del archivo3
+		
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		System.out.println("  ======================================================ARCHIVO SALIDA======================================================\n");
+		mostrarArchivo(archivoSalida);
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+		
+		
 	}
+
+	public void mostrarArchivo(File archivo){
+		FileReader fr = null;
+		BufferedReader br;
+		String linea;
+		
+		try {//Apertura del archivo2 para lectura
+			fr=new FileReader(archivo);
+			br=new BufferedReader(fr);
+			System.out.print("  ");
+			while((linea=br.readLine())!=null){
+				System.out.print(linea+", ");			
+			}
+			System.out.println();
+			System.out.println();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al abrir el archivo");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				fr.close();
+			} catch (IOException e) {
+				System.out.println("Error al cerrar el archivo");
+			}	
+		}
+	}
+
+
+
+
+
+
 }

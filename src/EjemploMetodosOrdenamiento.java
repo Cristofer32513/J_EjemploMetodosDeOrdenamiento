@@ -19,15 +19,16 @@ public class EjemploMetodosOrdenamiento {
 			System.out.println("4 = Metodo de ordenamiento Sellsort.");
 			System.out.println("5 = Metodo de ordenamiento QuickSort.");
 			System.out.println("6 = Metodo de ordenamiento RadixSort.");
-			System.out.println("7 = Elegir tamaño del vector a utilizar.");
-			System.out.println("8 = Salir");
-			System.out.println("-----------------------------------------");
+			System.out.println("7 = Metodo de ordenamiento por Intercalacion de Archivos.");
+			System.out.println("8 = Elegir tamaño del vector a utilizar.");
+			System.out.println("9 = Salir");
+			System.out.println("----------------------------------------------------------");
 			System.out.println("Elija una opcion...");
 			opcion=entrada.nextInt();
 			System.out.println();
 			System.out.println();
 			
-			if(opcion>=1 && opcion <=8){
+			if(opcion>=1 && opcion <=9){
 				switch(opcion){
 				case 1:
 					if(datos.length>0){
@@ -165,6 +166,11 @@ public class EjemploMetodosOrdenamiento {
 					System.out.println();
 					break;
 				case 7:
+					metodos.ordenamientoPorIntercalacion();
+					System.out.println();
+					System.out.println();
+					break;
+				case 8:
 					boolean repetirMenuTamañoVector=true;
 					int opcionVector=0;		
 					
@@ -225,7 +231,7 @@ public class EjemploMetodosOrdenamiento {
 					}
 					while(repetirMenuTamañoVector);
 					break;
-				case 8:
+				case 9:
 					repetirMenuPrincipal=false;
 					break;
 				}
