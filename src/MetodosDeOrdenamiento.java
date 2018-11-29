@@ -1,3 +1,11 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 class MetodosDeOrdenamiento {
 	public void mostrarVector(int[] datos){
 		byte cont=1;
@@ -253,6 +261,7 @@ class MetodosDeOrdenamiento {
 	    }
 	}
 	
+	
 	//========METODO DE ORDENAMIENTO RADIXSORT=========
 	public void ordenamientoRadixSort(int[] datos){
 		long contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0;
@@ -298,5 +307,113 @@ class MetodosDeOrdenamiento {
 		System.out.println();
 		System.out.println();
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-    }	
+    }
+	
+	
+	//========METODO DE ORDENAMIENTO POR INTERCALACION DE ARCHIVOS=========
+	public void ordenamientoPorIntercalacion(){
+		File archivo1=new File("./src/ArchivoI1.txt");//Archivos a leer
+		File archivo2=new File("./src/ArchivoI2.txt");//Archivos a leer
+				
+		FileReader frA1 = null;
+		BufferedReader brA1;
+		FileReader frA2 = null;
+		BufferedReader brA2;
+		
+		FileWriter archivo3=null;
+		PrintWriter pr=null;
+		
+		try{//Apertura del archivo de salida para escritura
+			archivo3=new FileWriter("./src/ArchivoSalidaI.txt", false);
+			pr=new PrintWriter(archivo3);
+			
+			try {//Apertura del archivo1 para lectura
+				frA1=new FileReader(archivo1);
+				brA1=new BufferedReader(frA1);
+				String lineaArchivo1;
+				
+				try {//Apertura del archivo2 para lectura
+					frA2=new FileReader(archivo2);
+					brA2=new BufferedReader(frA2);
+					String lineaArchivo2;
+					boolean repetir=true;
+					
+					lineaArchivo1=brA1.readLine();
+					lineaArchivo2=brA2.readLine();
+										
+					do{//Se realizan comparaciones mientras la bandera no cambie
+						if(Integer.parseInt(lineaArchivo1)<Integer.parseInt(lineaArchivo2)){
+							pr.println(lineaArchivo1);
+							if((lineaArchivo1=brA1.readLine())==null){
+								pr.println(lineaArchivo2);
+								while((lineaArchivo2=brA2.readLine())!=null){
+									pr.println(lineaArchivo2);
+								}
+								repetir=false;
+							}
+						}
+						else if(Integer.parseInt(lineaArchivo1)>Integer.parseInt(lineaArchivo2)){
+							pr.println(lineaArchivo2);
+							if((lineaArchivo2=brA2.readLine())==null){
+								pr.println(lineaArchivo1);
+								while((lineaArchivo1=brA1.readLine())!=null){
+									pr.println(lineaArchivo1);
+								}
+								repetir=false;
+							}
+						}
+						else{
+							pr.println(lineaArchivo1);
+							pr.println(lineaArchivo2);
+							if((lineaArchivo1=brA1.readLine())==null){
+								pr.println(lineaArchivo2);
+								while((lineaArchivo2=brA2.readLine())!=null){
+									pr.println(lineaArchivo2);
+								}
+								repetir=false;
+							}
+							if((lineaArchivo2=brA2.readLine())==null){
+								pr.println(lineaArchivo1);
+								while((lineaArchivo1=brA1.readLine())!=null){
+									pr.println(lineaArchivo1);
+								}
+								repetir=false;
+							}
+						}
+					}while(repetir);
+				} catch (FileNotFoundException e) {
+					System.out.println("Error al abrir el archivo");
+					//e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}finally{
+					try {
+						frA2.close();
+					} catch (IOException e) {
+						System.out.println("Error al cerrar el archivo");
+					}	
+				}//Final del archivo2
+			} catch (FileNotFoundException e) {
+				System.out.println("Error al abrir el archivo");
+				//e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					frA1.close();
+				} catch (IOException e) {
+					System.out.println("Error al cerrar el archivo");
+				}
+			}//Final del archivo1
+			System.out.println("Archivos combinados y ordenados correctamente");
+		}catch (IOException e){
+			System.out.println("Error al abrir o crear el archivo");
+		}finally{
+			try{
+				archivo3.close();
+			}catch(IOException e){
+				System.out.println("Error al cerrar el archivo");
+			}
+		}//Final del archivo3	
+	}
 }
