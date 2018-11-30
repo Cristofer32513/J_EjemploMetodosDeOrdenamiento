@@ -444,13 +444,21 @@ class MetodosDeOrdenamiento {
 		FileReader fr = null;
 		BufferedReader br;
 		String linea;
+		byte cont=0;
 		
 		try {//Apertura del archivo2 para lectura
 			fr=new FileReader(archivo);
 			br=new BufferedReader(fr);
-			System.out.print("  ");
+			
 			while((linea=br.readLine())!=null){
-				System.out.print(linea+", ");			
+				if(cont==15){
+					System.out.println("  "+linea+",	");
+					cont=1;
+				}
+				else{
+					System.out.print("  "+linea+",	");
+					cont++;
+				}		
 			}
 			System.out.println();
 			System.out.println();
