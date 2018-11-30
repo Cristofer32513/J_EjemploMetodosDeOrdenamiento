@@ -192,9 +192,8 @@ public class EjemploMetodosOrdenamiento {
 						BufferedReader br=new BufferedReader(new FileReader("./src/ArchivoMergeSort.txt"));	
 						List<Integer> lines=new ArrayList<Integer>();
 						String line;
-						while((line=br.readLine())!=null){
+						while((line=br.readLine())!=null)
 							lines.add(Integer.parseInt(line));
-						}
 						br.close();
 						Integer[] inputArray =lines.toArray(new Integer[lines.size()]);
 						metodos.mergeSort(inputArray, 0, inputArray.length-1);
@@ -205,9 +204,8 @@ public class EjemploMetodosOrdenamiento {
 							archivo3=new FileWriter("./src/ArchivoSalidaMS.txt", false);
 							pr=new PrintWriter(archivo3);
 							
-							for(Integer i : inputArray){
+							for(Integer i : inputArray)
 								pr.println(i);
-							}
 						}catch (IOException e){
 							System.out.println("Error al abrir o crear el archivo");
 						}finally{
@@ -216,7 +214,7 @@ public class EjemploMetodosOrdenamiento {
 							}catch(IOException e){
 								System.out.println("Error al cerrar el archivo");
 							}
-						}//Final del archivo3
+						}//Final del archivo para escritura.
 					}catch(IOException ie){
 						System.out.println(ie.getMessage());
 					}
