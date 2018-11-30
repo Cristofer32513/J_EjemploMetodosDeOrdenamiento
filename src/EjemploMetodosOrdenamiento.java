@@ -185,10 +185,7 @@ public class EjemploMetodosOrdenamiento {
 					
 					System.out.println("  ======================================================ARCHIVO ORIGINAL======================================================\n");
 					metodos.mostrarArchivo(archivoOriginal);
-					
-					System.out.println();
-					System.out.println();
-					
+									
 					long tiempoTotal=0, tiempoInicial=0;
 					tiempoInicial=System.nanoTime();
 					try{
@@ -224,8 +221,6 @@ public class EjemploMetodosOrdenamiento {
 					tiempoTotal=System.nanoTime()-tiempoInicial;
 					System.out.println("  ======================================================ARCHIVO ORDENADO======================================================\n");
 					metodos.mostrarArchivo(archivoSalidaMS);
-					System.out.println();
-					System.out.println();
 					metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal);
 					System.out.println();
 					System.out.println();
