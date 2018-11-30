@@ -199,11 +199,11 @@ public class EjemploMetodosOrdenamiento {
 						Integer[] inputArray =lines.toArray(new Integer[lines.size()]);
 						metodos.mergeSort(inputArray, 0, inputArray.length-1);
 						
-						FileWriter archivo3=null;
+						FileWriter archivoS=null;
 						PrintWriter pr=null;
 						try{//Apertura del archivo de salida para escritura
-							archivo3=new FileWriter("./src/ArchivoSalidaMS.txt", false);
-							pr=new PrintWriter(archivo3);
+							archivoS=new FileWriter("./src/ArchivoSalidaMS.txt", false);
+							pr=new PrintWriter(archivoS);
 							
 							for(Integer i : inputArray)
 								pr.println(i);
@@ -211,7 +211,7 @@ public class EjemploMetodosOrdenamiento {
 							System.out.println("Error al abrir o crear el archivo");
 						}finally{
 							try{
-								archivo3.close();
+								archivoS.close();
 							}catch(IOException e){
 								System.out.println("Error al cerrar el archivo");
 							}
@@ -227,9 +227,20 @@ public class EjemploMetodosOrdenamiento {
 					System.out.println();
 					break;
 				case 9:
+					File archivoSalidaMN=new File("./src/ArchivoSalidaMN.txt");
+					tiempoTotal=0;
+					tiempoInicial=0;
+					
+					System.out.println("  ======================================================ARCHIVO ORIGINAL======================================================\n");
 					metodos.mostrar(metodos.lectura());
 					System.out.println();
+					System.out.println();
+					tiempoInicial=System.nanoTime();
 					metodos.ordenamientoMezclaNatural(metodos.lectura());
+					tiempoTotal=System.nanoTime()-tiempoInicial;
+					System.out.println("  ======================================================ARCHIVO ORDENADO======================================================\n");
+					metodos.mostrarArchivo(archivoSalidaMN);
+					metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal);
 					System.out.println();
 					System.out.println();
 					break;
