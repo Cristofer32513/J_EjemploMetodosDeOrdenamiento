@@ -21,23 +21,24 @@ public class EjemploMetodosOrdenamiento {
 		int[] datos=new int[0];
 		
 		do{
-			System.out.println("1 = Metodo de ordenamiento Burbuja.");
-			System.out.println("2 = Metodo de ordenamiento por Seleccion.");
-			System.out.println("3 = Metodo de ordenamiento por Insercion.");
-			System.out.println("4 = Metodo de ordenamiento Sellsort.");
-			System.out.println("5 = Metodo de ordenamiento QuickSort.");
-			System.out.println("6 = Metodo de ordenamiento RadixSort.");
-			System.out.println("7 = Metodo de ordenamiento por Intercalacion de Archivos.");
-			System.out.println("8 = Metodo de ordenamiento Merge Sort con archivos.");
-			System.out.println("9 = Elegir tamaño del vector a utilizar.");
-			System.out.println("10 = Salir");
-			System.out.println("----------------------------------------------------------");
+			System.out.println(" 1 = Metodo de ordenamiento Burbuja.");
+			System.out.println(" 2 = Metodo de ordenamiento por Seleccion.");
+			System.out.println(" 3 = Metodo de ordenamiento por Insercion.");
+			System.out.println(" 4 = Metodo de ordenamiento Sellsort.");
+			System.out.println(" 5 = Metodo de ordenamiento QuickSort.");
+			System.out.println(" 6 = Metodo de ordenamiento RadixSort.");
+			System.out.println(" 7 = Metodo de ordenamiento por Intercalacion de Archivos.");
+			System.out.println(" 8 = Metodo de ordenamiento Merge Sort con archivos.");
+			System.out.println(" 9 = Metodo de ordenamiento Mezcla Natural con archivos.");
+			System.out.println("10 = Elegir tamaño del vector a utilizar.");
+			System.out.println("11 = Salir");
+			System.out.println("------------------------------------------------------------");
 			System.out.println("Elija una opcion...");
 			opcion=entrada.nextInt();
 			System.out.println();
 			System.out.println();
 			
-			if(opcion>=1 && opcion <=10){
+			if(opcion>=1 && opcion <=11){
 				switch(opcion){
 				case 1:
 					if(datos.length>0){
@@ -226,6 +227,13 @@ public class EjemploMetodosOrdenamiento {
 					System.out.println();
 					break;
 				case 9:
+					metodos.mostrar(metodos.lectura());
+					System.out.println();
+					metodos.ordenamientoMezclaNatural(metodos.lectura());
+					System.out.println();
+					System.out.println();
+					break;
+				case 10:
 					boolean repetirMenuTamañoVector=true;
 					int opcionVector=0;		
 					
@@ -286,7 +294,7 @@ public class EjemploMetodosOrdenamiento {
 					}
 					while(repetirMenuTamañoVector);
 					break;
-				case 10:
+				case 11:
 					repetirMenuPrincipal=false;
 					break;
 				}

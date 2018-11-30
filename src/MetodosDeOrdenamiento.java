@@ -509,7 +509,7 @@ class MetodosDeOrdenamiento {
 	
 	//========METODO DE ORDENAMIENTO MEZCLA NATURAL=========
 	public static Integer[] lectura(){
-		File archivo1=new File("./src/Archivo1.txt");
+		File archivo1=new File("./src/ArchivoMezclaNatural.txt");
 		FileReader frA1=null;
 		BufferedReader brA1;
 		Integer[] arr1=new Integer[0];
