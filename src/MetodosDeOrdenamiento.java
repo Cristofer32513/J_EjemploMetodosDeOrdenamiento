@@ -444,7 +444,7 @@ class MetodosDeOrdenamiento {
 		FileReader fr = null;
 		BufferedReader br;
 		String linea;
-		byte cont=0;
+		byte cont=1;
 		
 		try {//Apertura del archivo2 para lectura
 			fr=new FileReader(archivo);

@@ -1,3 +1,11 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,15 +28,16 @@ public class EjemploMetodosOrdenamiento {
 			System.out.println("5 = Metodo de ordenamiento QuickSort.");
 			System.out.println("6 = Metodo de ordenamiento RadixSort.");
 			System.out.println("7 = Metodo de ordenamiento por Intercalacion de Archivos.");
-			System.out.println("8 = Elegir tamaño del vector a utilizar.");
-			System.out.println("9 = Salir");
+			System.out.println("8 = Metodo de ordenamiento Merge Sort con archivos.");
+			System.out.println("9 = Elegir tamaño del vector a utilizar.");
+			System.out.println("10 = Salir");
 			System.out.println("----------------------------------------------------------");
 			System.out.println("Elija una opcion...");
 			opcion=entrada.nextInt();
 			System.out.println();
 			System.out.println();
 			
-			if(opcion>=1 && opcion <=9){
+			if(opcion>=1 && opcion <=10){
 				switch(opcion){
 				case 1:
 					if(datos.length>0){
@@ -171,6 +180,52 @@ public class EjemploMetodosOrdenamiento {
 					System.out.println();
 					break;
 				case 8:
+					File archivoOriginal=new File("./src/ArchivoMergeSort.txt");
+					File archivoSalidaMS=new File("./src/ArchivoSalidaMS.txt");
+					
+					System.out.println("  ======================================================ARCHIVO ORIGINAL======================================================\n");
+					metodos.mostrarArchivo(archivoOriginal);
+					System.out.println();
+					System.out.println();
+										
+					try{
+						BufferedReader br=new BufferedReader(new FileReader("./src/ArchivoMergeSort.txt"));	
+						List<Integer> lines=new ArrayList<Integer>();
+						String line;
+						while((line=br.readLine())!=null){
+							lines.add(Integer.parseInt(line));
+						}
+						br.close();
+						Integer[] inputArray =lines.toArray(new Integer[lines.size()]);
+						metodos.mergeSort(inputArray, 0, inputArray.length-1);
+						
+						FileWriter archivo3=null;
+						PrintWriter pr=null;
+						try{//Apertura del archivo de salida para escritura
+							archivo3=new FileWriter("./src/ArchivoSalidaMS.txt", false);
+							pr=new PrintWriter(archivo3);
+							
+							for(Integer i : inputArray){
+								pr.println(i);
+							}
+						}catch (IOException e){
+							System.out.println("Error al abrir o crear el archivo");
+						}finally{
+							try{
+								archivo3.close();
+							}catch(IOException e){
+								System.out.println("Error al cerrar el archivo");
+							}
+						}//Final del archivo3
+					}catch(IOException ie){
+						System.out.println(ie.getMessage());
+					}
+					System.out.println("  ======================================================ARCHIVO ORDENADO======================================================\n");
+					metodos.mostrarArchivo(archivoSalidaMS);
+					System.out.println();
+					System.out.println();
+					break;
+				case 9:
 					boolean repetirMenuTamañoVector=true;
 					int opcionVector=0;		
 					
@@ -231,7 +286,7 @@ public class EjemploMetodosOrdenamiento {
 					}
 					while(repetirMenuTamañoVector);
 					break;
-				case 9:
+				case 10:
 					repetirMenuPrincipal=false;
 					break;
 				}
